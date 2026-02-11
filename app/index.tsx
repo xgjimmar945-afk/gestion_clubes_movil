@@ -1,15 +1,22 @@
-import { Text, View } from "react-native";
+import { View, StyleSheet } from 'react-native';
+import { Text, Button } from 'react-native-paper';
+import { useRouter } from 'expo-router';
 
-export default function Index() {
+export default function Home() {
+  const router = useRouter();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View style={styles.container}>
+      <Text variant="headlineLarge">Página Principal</Text>
+      <Text variant="bodyLarge" style={styles.subtitle}>Gestión de Clubs de Ciencia Móvil</Text>
+      <Button mode="contained" onPress={() => router.push('/listado')}>
+        Ver Listado
+      </Button>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
+  subtitle: { marginBottom: 20, color: 'gray' }
+});
